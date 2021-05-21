@@ -1,0 +1,54 @@
+﻿body {
+    user-select: none;
+}
+
+.fixed-bottom{
+    bottom: 10px;
+}
+
+.fixed-top-left {
+    position: fixed;
+    left: 0;
+    z-index: 1030
+}
+
+.fixed-bottom-left {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1030
+}
+
+.fixed-top-right {
+    position: fixed;
+    right: 0;
+    z-index: 1030
+}
+
+.fixed-bottom-right {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1030
+}
+
+.box {
+    border: 1px solid black;
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.dropBox {
+    top: 0;
+    position: absolute;
+    z-index: 9999;
+    text-align-last: center;
+}
+
+#scoreDiv {
+    font-size: 18px;
+    font-weight: 800;
+}

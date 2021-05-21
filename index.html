@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="wwwroot/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="wwwroot/css/site.css" />
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 position-relative">
+                <div id="topLeft" class="box m-3 fixed-top-left"></div>
+                <div id="bottomLeft" class="box m-3 fixed-bottom-left"></div>
+                <div id="topRight" class="box m-3 fixed-top-right"></div>
+                <div id="bottomRight" class="box m-3 fixed-bottom-right"></div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-12 text-center fixed-bottom">
+                <div id="scoreDiv">Your score is: <span class="scoreBox">0</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 dropBox ui-widget-content" id="dropBoxId">
+            <img id="dropBoxImage" />
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Game Over</h5>
+                    <button type="button" class="btn btnClose">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="scoreDiv">Your score is: <span class="scoreBox">0</span></div>
+                    <p>Click Yes to play again</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnPlayAgain">Yes</button>
+                    <button type="button" class="btn btn-secondary btnClose">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="wwwroot/lib/bootstrap-5.0.1-dist/js/bootstrap.min.js"></script>
+    <script src="wwwroot/data/inputData.js"></script>
+    <script src="wwwroot/js/game-manager.js"></script>
+    <script src="wwwroot/js/image.js"></script>
+    <script src="wwwroot/js/image-manager.js"></script>
+    <script src="wwwroot/js/box-manager.js"></script>
+    <script src="wwwroot/js/animation-manager.js"></script>
+    <script src="wwwroot/js/score-manager.js"></script>
+    <script src="wwwroot/js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="wwwroot/lib/jquery-pause/jquery.pause.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dropBoxId').draggable({
+                start: function (event, ui) {
+                    animationManager.pauseAnimation();
+                },
+                stop: function (event, ui) {
+                    if (gameManager.initialLeft > ui.offset.left && gameManager.initalTop > ui.offset.top) {
+                        //Top Left
+                        animationManager.animateTo('topLeft');
+                        scoreManager.updateScore('topLeft');
+                    }
+                    if (gameManager.initialLeft < ui.offset.left && gameManager.initalTop > ui.offset.top) {
+                        //Top Right
+                        animationManager.animateTo('topRight');
+                        scoreManager.updateScore('topRight');
+                        ////console.log("topRight");
+                    }
+                    if (gameManager.initialLeft > ui.offset.left && gameManager.initalTop < ui.offset.top) {
+                        //Bottom Left
+                        animationManager.animateTo('bottomLeft');
+                        scoreManager.updateScore('bottomLeft');
+                        ////console.log("bottomLeft");
+                    }
+                    if (gameManager.initialLeft < ui.offset.left && gameManager.initalTop < ui.offset.top) {
+                        //Bottom Right
+                        animationManager.animateTo('bottomRight');
+                        scoreManager.updateScore('bottomRight');
+                        ////console.log("bottomRight");
+                    }
+                    animationManager.resumeAnimation();
+                },
+                drag: function (event, ui) {
+                    ////console.log(ui);
+
+                }
+            });
+
+            $('#btnPlayAgain').on('click', function () {
+                gameManager.reset();
+            });
+
+            $('.btnClose').on('click', function () {
+                $('#gameOverModal').modal('hide');
+            })
+
+            gameManager.init();
+        });
+    </script>
+</body>
+</html>
