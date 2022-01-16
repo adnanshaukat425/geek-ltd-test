@@ -4,11 +4,11 @@ var scoreManager = {
     
     updateScore(selection) {
         if (boxManager.boxesInfo[selection].trim().toLowerCase() == imageManager.currentImage.color.trim().toLowerCase()) {
-            this.score += 20;
+            this.score += config.incrementScore;
             $('#' + selection).css({ border: '2px solid green' });
         }
         else {
-            this.score -= 5;
+            this.score -= config.decrementScore;
             $('#' + selection).css({ border: '2px solid red' });
         }
         this.displayScore();
