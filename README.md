@@ -4,4 +4,4 @@ Open up the Index.html file in the browser and it will start the game automatica
 
 **Working Video**
 
-https://www.dropbox.com/s/ia33svhhe7wmwfh/screen-capture.webm?dl=0
+Added in the project root directory
