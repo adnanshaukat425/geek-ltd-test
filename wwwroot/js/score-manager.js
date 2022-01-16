@@ -3,7 +3,7 @@ var scoreManager = {
     isScoring: false,
     
     updateScore(selection) {
-        if (boxManager.boxesInfo[selection].trim().toLowerCase() == imageManager.currentImage.nationality.trim().toLowerCase()) {
+        if (boxManager.boxesInfo[selection].trim().toLowerCase() == imageManager.currentImage.color.trim().toLowerCase()) {
             this.score += 20;
             $('#' + selection).css({ border: '2px solid green' });
         }

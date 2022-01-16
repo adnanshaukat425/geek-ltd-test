@@ -1,13 +1,13 @@
 var boxManager = {
     dropBoxElement: null,
     scoreBox: null,
-    boxesInfo: { topLeft: 'Japanese', topRight: 'Korean', bottomLeft: 'Chinese', bottomRight: 'Thai' },
+    boxesInfo: { topLeft: 'Blue', topRight: 'Red', bottomLeft: 'Yellow', bottomRight: 'Green' },
 
     setBoxes() {
-        $('#topLeft').html('"' + this.boxesInfo.topLeft + '"');
-        $('#bottomLeft').html('"' + this.boxesInfo.bottomLeft + '"');
-        $('#topRight').html('"' + this.boxesInfo.topRight + '"');
-        $('#bottomRight').html('"' + this.boxesInfo.bottomRight + '"');
+        $('#topLeft').html(this.boxesInfo.topLeft);
+        $('#bottomLeft').html(this.boxesInfo.bottomLeft);
+        $('#topRight').html(this.boxesInfo.topRight);
+        $('#bottomRight').html(this.boxesInfo.bottomRight);
     },
 
     setScoreBoxManager(className) {

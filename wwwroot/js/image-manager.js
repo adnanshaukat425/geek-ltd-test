@@ -5,7 +5,7 @@ var imageManager = {
 
     loadImages() {
         $.each(imagesData, function (k, v) {
-            imageManager.imagesObjects.push(new Image(config.defaultImageWidth, config.defaultImageHeight, v.url, v.nationality, v.id));
+            imageManager.imagesObjects.push(new Image(config.defaultImageWidth, config.defaultImageHeight, v.url, v.color, v.id));
         });
     },
 

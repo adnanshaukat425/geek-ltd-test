@@ -1,9 +1,9 @@
 class Image {
-    constructor(height, width, src, nationality, id) {
+    constructor(height, width, src, color, id) {
         this.height = height;
         this.width = width;
         this.src = src;
-        this.nationality = nationality;
+        this.color = color;
         this.id = id;
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page Title</title>
+    <title>Geek Ltd Test</title>
     <link rel="stylesheet" href="wwwroot/lib/bootstrap-5.0.1-dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="wwwroot/css/site.css" />
 </head>
@@ -65,7 +65,8 @@
     <script src="wwwroot/lib/jquery-pause/jquery.pause.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('#dropBoxId').draggable({
+            setTimeout(function(){
+$('#dropBoxId').draggable({
                 start: function (event, ui) {
                     animationManager.pauseAnimation();
                 },
@@ -110,6 +111,7 @@
             })
 
             gameManager.init();
+            }, 5000)
         });
     </script>
 </body>
